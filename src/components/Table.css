@@ -1,0 +1,27 @@
+/* App.css */
+
+/* Style for the container of the table */
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Style for the table */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Style for table cells */
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  /* Style for highlighted cells */
+ td.highlighted {
+    background-color: yellow; /* You can change the background color to your preferred highlight color */
+    font-weight: bold;
+  }
+  
