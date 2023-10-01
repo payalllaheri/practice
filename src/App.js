@@ -1,4 +1,3 @@
-
 import "./App.css";
 import Table from "./components/Table";
 import Heading from "./components/Heading";
@@ -12,20 +11,7 @@ import Home from "./components/Home";
 function App() {
   return (
     <div className="App">
-      <Agenda />
       <Table />
-      <Heading title="Hello" />
-
-
-      <Timer />
-      <ScrollingPage />
-      <Heading title="Hello" />
-      <Timer />
-      <ScrollingPage />
-      <About/>
-      <Agenda />
-      <Table />
-      <Home/>
     </div>
   );
 }

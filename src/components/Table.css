@@ -24,4 +24,11 @@
     background-color: yellow; /* You can change the background color to your preferred highlight color */
     font-weight: bold;
   }
+  /* Table.css */
+.table-container {
+  overflow: auto;
+  max-height: 400px; /* Set a maximum height for the scrollable area */
+  border: 1px solid #ccc; /* Optional: Add a border for better visualization */
+}
+
   

@@ -7,8 +7,22 @@ const TableCellHighlighter = () => {
     { title: "b", id: "2" },
     { title: "c", id: "3" },
     { title: "d", id: "4" },
+    { title: "a", id: "1" },
+    { title: "b", id: "2" },
+    { title: "c", id: "3" },
+    { title: "d", id: "4" },
+
+    
   ];
   const titleY = [
+    { title: "e", id: "5" },
+    { title: "f", id: "6" },
+    { title: "g", id: "7" },
+    { title: "h", id: "8" },
+    { title: "e", id: "5" },
+    { title: "f", id: "6" },
+    { title: "g", id: "7" },
+    { title: "h", id: "8" },
     { title: "e", id: "5" },
     { title: "f", id: "6" },
     { title: "g", id: "7" },
@@ -56,33 +70,34 @@ const TableCellHighlighter = () => {
 
   // Function to handle mouse enter event for a cell
   const handleCellMouseEnter = (rowIndex, columnIndex) => {
-    // Create a new array to hold the updated state
-    const newTableData = tableData.map((row, rIndex) =>
-      row.map((highlighted, cIndex) => rIndex === rowIndex || cIndex === columnIndex)
-    );
-
-    // Clear the highlights for the right and bottom cells
-    for (let i = rowIndex + 1; i < tableData.length; i++) {
-      newTableData[i][columnIndex] = false;
+    // Check if the cell has a title (not in the first row or column)
+    if (rowIndex > 0 && columnIndex > 0) {
+      // Create a new array to hold the updated state
+      const newTableData = tableData.map((row, rIndex) =>
+        row.map((highlighted, cIndex) => rIndex === rowIndex || cIndex === columnIndex)
+      );
+      newTableData[rowIndex][0] = false; // Clear same row's first cell
+      newTableData[0][columnIndex] = false;
+      // Clear the highlights for the right and bottom cells
+      for (let i = rowIndex + 1; i < tableData.length; i++) {
+        newTableData[i][columnIndex] = false;
+      }
+  
+      for (let j = columnIndex + 1; j < tableData[0].length; j++) {
+        newTableData[rowIndex][j] = false;
+      }
+  
+      setTableData(newTableData);
     }
-
-    for (let j = columnIndex + 1; j < tableData[0].length; j++) {
-      newTableData[rowIndex][j] = false;
-    }
-
-    setTableData(newTableData);
-
+  
     // Get the IDs of the first cell in the same row and column
     const rowId = rowIndex === 0 ? titleX[columnIndex - 1]?.id : titleY[rowIndex - 1]?.id;
-    console.log("rowid",rowId);
-    console.log("---------",titleX[columnIndex - 1]?.id)
-    console.log("........",titleY[rowIndex - 1]?.id)
     const colId = columnIndex === 0 ? titleY[rowIndex - 1]?.id : titleX[columnIndex - 1]?.id;
-
+  
     setFirstCellRowId(rowId);
     setFirstCellColId(colId);
   };
-
+  
   // Function to handle mouse leave event for a cell
   const handleCellMouseLeave = () => {
     // Clear all highlights by resetting the state
@@ -94,7 +109,8 @@ const TableCellHighlighter = () => {
   // Function to render the table
   const renderTable = () => {
     return (
-      <table>
+      <div className="table-container">
+ <table  className='border-separate  border-spacing-6 '>
         <tbody>
           {tableData.map((row, rowIndex) => (
             <tr key={rowIndex}>
@@ -108,9 +124,9 @@ const TableCellHighlighter = () => {
                   {rowIndex === 0 && columnIndex === 0 ? (
                     <span>{""}</span>
                   ) : columnIndex === 0 && rowIndex > 0 ? (
-                    <span>{titleY[rowIndex - 1].title}</span>
+                    <span>{titleY[rowIndex - 1]?.title}</span>
                   ) : rowIndex === 0 && columnIndex > 0 ? (
-                    <span>{titleX[columnIndex - 1].title}</span>
+                    <span>{titleX[columnIndex - 1]?.title}</span>
                   ) : (
                     // Render other content for non-header cells if needed
                     // For example, you can put content like "Cell [rowIndex,columnIndex]" here
@@ -123,6 +139,10 @@ const TableCellHighlighter = () => {
           ))}
         </tbody>
       </table>
+      
+    
+      </div> 
+    
     );
   };
 
