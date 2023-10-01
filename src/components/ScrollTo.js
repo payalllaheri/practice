@@ -1,7 +1,5 @@
 import React from "react";
-import About from "./About";
-import Home from "./Home";
-import Heading from "./Heading";
+
 import { Link, Element, Events, animateScroll as scroll } from 'react-scroll';
 
 
