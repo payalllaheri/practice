@@ -108,43 +108,53 @@ const TableCellHighlighter = () => {
 
   // Function to render the table
   const renderTable = () => {
-    return (
-      <div className="table-container">
- <table  className='border-separate  border-spacing-6 '>
-        <tbody>
-          {tableData.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((highlighted, columnIndex) => (
-                <td
-                  key={columnIndex}
-                  onClick={() => handleCellMouseEnter(rowIndex, columnIndex)}
-                  onMouseLeave={handleCellMouseLeave}
-                  className={highlighted ? 'highlighted' : ''}
-                >
-                  {rowIndex === 0 && columnIndex === 0 ? (
-                    <span>{""}</span>
-                  ) : columnIndex === 0 && rowIndex > 0 ? (
-                    <span>{titleY[rowIndex - 1]?.title}</span>
-                  ) : rowIndex === 0 && columnIndex > 0 ? (
-                    <span>{titleX[columnIndex - 1]?.title}</span>
-                  ) : (
-                    // Render other content for non-header cells if needed
-                    // For example, you can put content like "Cell [rowIndex,columnIndex]" here
-                    // <span>Cell {rowIndex},{columnIndex}</span>
-                    null
-                  )}
-                </td>
-              ))}
-            </tr>
+    // Inside the renderTable function
+return (
+  <div className="table-container">
+    <table className='border-separate  border-spacing-6'>
+      <thead>
+        <tr>
+          {tableData[0].map((highlighted, columnIndex) => (
+            <th
+              key={columnIndex}
+              className={columnIndex === 0 ? 'fixed-header' : ''}
+            >
+              {columnIndex === 0 ? (
+                <span>{""}</span>
+              ) : (
+                <span>{titleX[columnIndex - 1]?.title}</span>
+              )}
+            </th>
           ))}
-        </tbody>
-      </table>
-      
-    
-      </div> 
-    
-    );
+        </tr>
+      </thead>
+      <tbody>
+        {tableData.slice(1).map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((highlighted, columnIndex) => (
+              <td
+                key={columnIndex}
+                onClick={() => handleCellMouseEnter(rowIndex + 1, columnIndex)}
+                onMouseLeave={handleCellMouseLeave}
+                className={highlighted ? 'highlighted' : ''}
+              >
+                {columnIndex === 0 && rowIndex > 0 ? (
+                  <span>{titleY[rowIndex - 1]?.title}</span>
+                ) : (
+                  null
+                )}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
   };
+  
+  
 
   return (
     <div>
