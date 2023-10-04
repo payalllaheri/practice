@@ -2,15 +2,15 @@
 
 /* Style for the container of the table */
 .App {
-  text-align: center;
-  padding: 20px;
-}
-
-/* Style for the table */
-.table-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Style for the table */
+ .table-container {
   overflow: auto; /* Use "auto" to show scrollbars on both axes */
   max-height: 400px;
-  width: 100%; /* Set a fixed width to the container */
+  max-width: 1000px;
   border: 1px solid #ccc;
 }
 
@@ -19,6 +19,17 @@ table {
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed; /* Ensure fixed layout for proper column widths */
+}
+.first-row-cell {
+  border: none; /* Remove top border for first row cells */
+}
+/* Add this to your Table.css file */
+table td.first-cell {
+  border: none !important; /* Remove border for the first cell (row 0, column 0) */
+}
+
+.first-col-cell {
+  border: none; /* Remove left border for first column cells */
 }
 
 /* Style for table cells */
@@ -30,9 +41,16 @@ td {
   overflow: hidden;
   text-overflow: ellipsis; /* Show ellipsis (...) for overflowing content */
 }
+  
+  /* Style for highlighted cells */
+ td.highlighted {
+    background-color: yellow; /* You can change the background color to your preferred highlight color */
+    font-weight: bold;
+  }
 
-/* Style for highlighted cells */
-td.highlighted {
-  background-color: yellow; /* You can change the background color to your preferred highlight color */
-  font-weight: bold;
+.fixed-header {
+  position: sticky;
+  top: 0;
+  background-color: white; /* Set the background color as needed */
+  z-index: 1; /* Ensure it appears above the table body */
 }

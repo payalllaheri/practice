@@ -1,6 +1,6 @@
 import "./App.css";
 import Table from "./components/Table";
-import Heading from "./components/Heading";
+
 
 import Timer from "./components/Timer";
 import ScrollingPage from "./components/ScrollTo";
@@ -11,7 +11,9 @@ import Home from "./components/Home";
 function App() {
   return (
     <div className="App">
+      {/* <Agenda/> */}
       <Table />
+      {/* <About ></About> */}
     </div>
   );
 }

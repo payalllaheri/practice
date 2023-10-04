@@ -11,9 +11,11 @@ const Heading = ({ title }) => {
       <TypeWriterEffect
         textStyle={{ fontFamily: "Red Hat Display" }}
         startDelay={100}
-        cursorColor="black"
+        // cursorColor="black"
+    className={{backgroundColor:"white"}}
+        hideCursorAfterText = "false"
         text={title}
-        typeSpeed={100}
+        typeSpeed={500}
         eraseSpeed={100}
       />
     </div>
