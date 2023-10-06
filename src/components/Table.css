@@ -1,35 +1,15 @@
-/* App.css */
-
 /* Style for the container of the table */
-.App {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Style for the table */
- .table-container {
-  overflow: auto; /* Use "auto" to show scrollbars on both axes */
-  max-height: 400px;
-  max-width: 1000px;
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
   border: 1px solid #ccc;
+  max-width: 100%; /* Set a maximum width to enable scrolling */
 }
 
 /* Style for the table */
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 100%; /* Make the table take up 100% of its container's width */
   table-layout: fixed; /* Ensure fixed layout for proper column widths */
-}
-.first-row-cell {
-  border: none; /* Remove top border for first row cells */
-}
-/* Add this to your Table.css file */
-table td.first-cell {
-  border: none !important; /* Remove border for the first cell (row 0, column 0) */
-}
-
-.first-col-cell {
-  border: none; /* Remove left border for first column cells */
 }
 
 /* Style for table cells */
@@ -40,17 +20,33 @@ td {
   white-space: nowrap; /* Prevent cell content from wrapping */
   overflow: hidden;
   text-overflow: ellipsis; /* Show ellipsis (...) for overflowing content */
+  min-width: 100px; /* Set a fixed minimum cell width */
 }
-  
-  /* Style for highlighted cells */
- td.highlighted {
-    background-color: yellow; /* You can change the background color to your preferred highlight color */
-    font-weight: bold;
-  }
+
+/* Style for highlighted cells */
+td.highlighted {
+  background-color: yellow; /* You can change the background color to your preferred highlight color */
+  font-weight: bold;
+}
 
 .fixed-header {
   position: sticky;
   top: 0;
   background-color: white; /* Set the background color as needed */
   z-index: 1; /* Ensure it appears above the table body */
+}
+
+/* Add styles for first-row-cell and first-col-cell if needed */
+/* Webkit (Safari and Chrome) scrollbar styling */
+.table-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: lightgray;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: darkgray;
+  border-radius: 5px;
 }

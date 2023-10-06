@@ -15,6 +15,12 @@ const TableCellHighlighter = () => {
     { title: "rb", id: "19" }, // Change the id to be unique
     { title: "cr", id: "20" }, // Change the id to be unique
     { title: "dv", id: "21" }, 
+    { title: "cr", id: "35" },
+    { title: "dv", id: "443" },
+    { title: "ha", id: "18" }, // Change the id to be unique
+    { title: "rb", id: "19" }, // Change the id to be unique
+    { title: "cr", id: "20" }, // Change the id to be unique
+    { title: "dv", id: "21" }, 
     // Change the id to be unique
   ];
   
@@ -35,7 +41,20 @@ const TableCellHighlighter = () => {
     { title: "fsd", id: "q64" },
     { title: "gx", id: "73" },
     { title: "hx", id: "8qs9" },
-    { title: "se", id: "9e0" },  // Change the id to be unique
+    { title: "se", id: "9e0" }, 
+    { title: "ec", id: "554" },
+    { title: "fsd", id: "q64" },
+    { title: "gx", id: "73" },
+    { title: "hx", id: "8qs9" },
+    { title: "se", id: "9e0" },
+    { title: "se", id: "9e0" }, 
+    { title: "ec", id: "554" },
+    { title: "fsd", id: "q64" },
+    { title: "gx", id: "73" },
+    { title: "hx", id: "8qs9" },
+    { title: "se", id: "9e0" },
+    
+      // Change the id to be unique
   ];
   
   const [tableData, setTableData] = useState(() =>
@@ -173,6 +192,7 @@ const TableCellHighlighter = () => {
             }${columnIndex === 0 ? "first-col-cell " : ""}${
               rowIndex === 0 && columnIndex === 0 ? "first-cell" : ""
             }`}
+            style={{ width: "100px" }} 
           >
             {rowIndex === 0 && columnIndex === 0 ? (
               <span>{""}</span>
@@ -201,13 +221,13 @@ const TableCellHighlighter = () => {
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}>
-        <div className="table-scroll-x">
-          <table className="table-auto border-separate border-spacing-6 overflow-scroll w-full">
+      
+          <table className="table-auto table-style border-separate border-spacing-6  w-full">
             <tbody>
               {tableRows}
             </tbody>
           </table>
-        </div>
+      
       </div>
     );
   };
